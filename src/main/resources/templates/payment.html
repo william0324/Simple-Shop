@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>向快钱发送请求</title>
+</head>
+<body>
+<h3>确认支付到快钱</h3>
+<form name="kqPay" action="https://sandbox.99bill.com/gateway/recvMerchantInfoAction.htm" method="get">
+
+    <input type="hidden" name="inputCharset" th:value="${pay.inputCharset}"/>
+    <input type="hidden" name="pageUrl" th:value="${pay.pageUrl}"/>
+    <input type="hidden" name="bgUrl" th:value="${pay.bgUrl}"/>
+    <input type="hidden" name="version" th:value="${pay.version}"/>
+    <input type="hidden" name="language" th:value="${pay.language}"/>
+    <input type="hidden" name="signType" th:value="${pay.signType}"/>
+    <input type="hidden" name="signMsg" th:value="${pay.signMsgVal}"/>
+    <input type="hidden" name="merchantAcctId" th:value="${pay.merchantAcctId}"/>
+    <input type="hidden" name="payerName" th:value="${pay.payerName}"/>
+    <input type="hidden" name="payerContactType" th:value="${pay.payerContactType}"/>
+    <input type="hidden" name="payerContact" th:value="${pay.payerContact}"/>
+    <input type="hidden" name="payerIdType" th:value="${pay.payerIdType}"/>
+    <input type="hidden" name="payerId" th:value="${pay.payerId}"/>
+    <input type="hidden" name="payerIP" th:value="${pay.payerIP}"/>
+    <input type="hidden" name="terminalIp" th:value="${pay.terminalIp}"/>
+    <input type="hidden" name="tdpformName" th:value="${pay.tdpformName}"/>
+    <input type="hidden" name="orderId" th:value="${pay.orderId}"/>
+    <input type="hidden" name="orderAmount" th:value="${pay.orderAmount}"/>
+    <input type="hidden" name="orderTime" th:value="${pay.orderTime}"/>
+    <input type="hidden" name="orderTimestamp" th:value="${pay.orderTimestamp}"/>
+    <input type="hidden" name="productName" th:value="${pay.productName}"/>
+    <input type="hidden" name="productNum" th:value="${pay.productNum}"/>
+    <input type="hidden" name="productId" th:value="${pay.productId}"/>
+    <input type="hidden" name="productDesc" th:value="${pay.productDesc}"/>
+    <input type="hidden" name="ext1" th:value="${pay.ext1}"/>
+    <input type="hidden" name="ext2" th:value="${pay.ext2}"/>
+    <input type="hidden" name="payType" th:value="${pay.payType}"/>
+    <input type="hidden" name="bankId" th:value="${pay.bankId}"/>
+    <input type="hidden" name="redoFlag" th:value="${pay.redoFlag}"/>
+    <input type="hidden" name="pid" th:value="${pay.pid}"/>
+    <input type="hidden" name="submitType" th:value="${pay.submitType}"/>
+    <input type="hidden" name="orderTimeOut" th:value="${pay.orderTimeOut}"/>
+    <input type="hidden" name="terminalIp" th:value="${pay.terminalIp}"/>
+    <input type="hidden" name="tdpformName" th:value="${pay.tdpformName}"/>
+    <input type="hidden" name="extDataType" th:value="${pay.extDataType}"/>
+    <input type="hidden" name="extDataContent" th:value='${pay.extDataContent}'/>
+<!--手动提交-->
+<!--    <input type="submit" name="submit" th:value="提交到快钱">-->
+</form>
+<script>
+    // 自动提交
+    document.forms[0].submit();
+</script>
+</body>
+</html>

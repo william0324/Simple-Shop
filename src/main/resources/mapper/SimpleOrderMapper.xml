@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.romaneekang.project.mapper.SimpleOrderMapper">
+
+    <resultMap id="BaseResultMap" type="com.romaneekang.project.pojo.SimpleOrder">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="uid" column="uid" jdbcType="INTEGER"/>
+            <result property="orderNo" column="order_no" jdbcType="VARCHAR"/>
+            <result property="status" column="status" jdbcType="INTEGER"/>
+            <result property="payMoney" column="pay_money" jdbcType="DECIMAL"/>
+            <result property="payTime" column="pay_time" jdbcType="TIMESTAMP"/>
+            <result property="remark" column="remark" jdbcType="VARCHAR"/>
+            <result property="goodsReplId" column="goods_repl_id" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,uid,order_no,
+        status,pay_money,pay_time,
+        remark,goods_repl_id
+    </sql>
+<!--
+    for update: 给记录上锁，是mysql的数据库锁，排他锁
+    排他锁含义：当前事务锁定记录，这个记录的数据在当前事务没有完成之前，不能被修改或者删除
+    锁类型：
+    1.行级别锁:只锁定一行，其他行数据库任何事务都可以修改、删除
+        成立条件:where部分 需要使用主键或唯一索引作为条件
+    2.表级别锁：锁定表中所有行，直到事务结束
+-->
+    <select id="selectByOrderIdForUpdate" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from simple_order
+        where order_no = #{orderId}
+        for update
+    </select>
+</mapper>
