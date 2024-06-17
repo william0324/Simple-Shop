@@ -57,9 +57,13 @@ public class Pkipair {
     public boolean enCodeByCer(String val, String msg) {
         boolean flag = false;
         try {
+            // 快钱的公钥证书
             String file = Pkipair.class.getResource("CFCA_sandbox.cer").toURI().getPath();//99bill[1].cert.rsa.20140803.cer
+            // String file = Pkipair.class.getResource("99bill[1].cert.rsa.20140803.cer").toURI().getPath();//99bill[1].cert.rsa.20140803.cer
             System.out.println(file);                       //  99bill.cert.rsa.20140803.cer
             FileInputStream inStream = new FileInputStream(file);
+
+
             CertificateFactory cf = CertificateFactory.getInstance("X.509");
             X509Certificate cert = (X509Certificate) cf.generateCertificate(inStream);
             PublicKey pk = cert.getPublicKey();

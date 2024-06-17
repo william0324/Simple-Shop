@@ -14,6 +14,10 @@
 
 ![动付通-第 2 页](images/动付通-第 2 页.jpg)
 
+- 验证签名
+
+![img.png](img.png)
+
 Simple-Shop商城项目 ： 实现快钱支付基本功能。  调用支付接口， 能获取异步通知即可
 
 首先阅读快钱接口文档：
@@ -349,3 +353,21 @@ boolean flag = signature.verify(decoder.decode(msg.getBytes()));
 
 http://localhost:8080/shop/receive/notify?orderId=KQ20240615090218001&payResult=10
 
+## 1.5 内网穿透
+
+测试给快钱的返回地址能不能用
+`String bgUrl = "https://12a86bb9e19893.lhr.life/shop/receive/notify";`
+
+浏览器访问：http://localhost.run/
+
+![img_1.png](img_1.png)
+
+
+在cmd中执行， 8080换成自己的端口号
+
+![img_3.png](img_3.png)
+
+
+查看外网地址：
+
+![img_2.png](img_2.png)
